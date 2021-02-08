@@ -7,14 +7,16 @@ import {ShoppingListService} from '../shopping-list/shopping-list-service';
 export class RecipeService {
 
   private recipes: Recipe[] = [
-    new Recipe('Spagetthi',
+    new Recipe(1,
+      'Spagetthi',
       'This is Spagetthi',
       'https://www.thewholesomedish.com/wp-content/uploads/2020/08/THE-BEST-CLASSIC-SPAGHETTI-600X900.jpg',
       [
         new Ingredient('Noodles', 1),
         new Ingredient('Pasta Sauce', 1)
       ]),
-    new Recipe('Momos',
+    new Recipe(2,
+      'Momos',
       'This is Momo',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpCQixzITHVHtn8kYQQ2oRsiexqn-Fu7dIeQ&usqp=CAU',
       [
@@ -31,6 +33,10 @@ export class RecipeService {
 
   addIngredientToShoppingList = (ingredient: Ingredient[]) => {
     this.shoppingService.addIngredients(ingredient);
+  }
+
+  getRecipe = (index: number) => {
+    return this.recipes[index];
   }
 
 }

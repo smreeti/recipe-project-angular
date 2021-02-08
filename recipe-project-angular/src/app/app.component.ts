@@ -7,14 +7,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'recipe-project-angular';
-  loadedFeature = 'recipe';
+  // loadedFeature = 'recipe';
 
   ngOnInit(): void {
     console.log('AppComponent-ngOnInit called:::::::');
   }
 
-  onNavigate = async (feature: string) => {
-     this.loadedFeature = feature;
-  }
+  // onNavigate = async (feature: string) => {
+  //    this.loadedFeature = feature;
+  // }
 
 }
