@@ -21,7 +21,7 @@ export class RecipeDetailComponent implements OnInit {
 
   addIngredientToShoppingList = (ingredient: Ingredient[]) => {
     this.recipeService.addIngredientToShoppingList(ingredient);
-  };
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -35,5 +35,5 @@ export class RecipeDetailComponent implements OnInit {
 
   onEditRecipe = () => {
     this.router.navigate(['edit'], {relativeTo: this.route});
-  }
+  };
 }
