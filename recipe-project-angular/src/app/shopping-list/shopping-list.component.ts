@@ -22,4 +22,9 @@ export class ShoppingListComponent implements OnInit {
         }
       );
   }
+
+  onEditItem = (index: number) => {
+    console.log('index::::', index);
+    this.shoppingListService.startedEditing.next(index);
+  };
 }

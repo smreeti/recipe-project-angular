@@ -8,6 +8,8 @@ export class ShoppingListService {
     new Ingredient('Onion', 30)
   ];
   ingredientChanged = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
+
   /*making copy of the original ingredients array*/
   getIngredients = () => {
     return this.ingredients.slice();
@@ -20,6 +22,13 @@ export class ShoppingListService {
 
   addIngredients = (ingredient: Ingredient[]) => {
     this.ingredients.push(...ingredient);
+    this.ingredientChanged.next(this.ingredients.slice());
+  }
+
+  getIngredient = (index: number) => this.ingredients[index];
+
+  updateIngredient = (index: number, ingredient: Ingredient) =>{
+    this.ingredients[index] = ingredient;
     this.ingredientChanged.next(this.ingredients.slice());
   }
 }
