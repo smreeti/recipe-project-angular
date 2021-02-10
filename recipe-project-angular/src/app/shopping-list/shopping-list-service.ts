@@ -13,22 +13,27 @@ export class ShoppingListService {
   /*making copy of the original ingredients array*/
   getIngredients = () => {
     return this.ingredients.slice();
-  }
+  };
 
   addIngredient = (ingredient: Ingredient) => {
     this.ingredients.push(ingredient);
     this.ingredientChanged.next(this.ingredients.slice());
-  }
+  };
 
   addIngredients = (ingredient: Ingredient[]) => {
     this.ingredients.push(...ingredient);
     this.ingredientChanged.next(this.ingredients.slice());
-  }
+  };
 
   getIngredient = (index: number) => this.ingredients[index];
 
-  updateIngredient = (index: number, ingredient: Ingredient) =>{
+  updateIngredient = (index: number, ingredient: Ingredient) => {
     this.ingredients[index] = ingredient;
+    this.ingredientChanged.next(this.ingredients.slice());
+  }
+
+  deleteIngredient = (index: number) => {
+    this.ingredients.splice(index, 1);
     this.ingredientChanged.next(this.ingredients.slice());
   }
 }
