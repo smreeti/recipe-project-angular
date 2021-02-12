@@ -1,8 +1,7 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,8 +9,6 @@ import {Subject} from 'rxjs';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-
-  @Output() recipeWasSelected = new Subject<Recipe>();
   recipes: Recipe[];
 
   constructor(private recipeService: RecipeService,
