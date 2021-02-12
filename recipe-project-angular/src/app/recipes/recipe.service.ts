@@ -2,6 +2,7 @@ import {Recipe} from './recipe.model';
 import {EventEmitter, Injectable} from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list-service';
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Injectable()
 export class RecipeService {
@@ -27,7 +28,8 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   recipeChanged = new EventEmitter<Recipe[]>();
 
-  constructor(private shoppingService: ShoppingListService) {
+  constructor(private shoppingService: ShoppingListService,
+              private dataStorageService: DataStorageService) {
   }
 
   getRecipes = () => {
@@ -44,8 +46,9 @@ export class RecipeService {
 
   addRecipe = (recipe: Recipe) => {
     this.recipes.push(recipe);
+    this.dataStorageService.saveRecipe(this.getRecipes());
     this.recipeChanged.emit(this.recipes.slice());
-  }
+  };
 
   updateRecipe = (index: number, recipe: Recipe) => {
     this.recipes[index] = recipe;
@@ -55,5 +58,5 @@ export class RecipeService {
   deleteRecipe = (index: number) => {
     this.recipes.splice(index, 1);
     this.recipeChanged.emit(this.recipes.slice());
-  }
+  };
 }
