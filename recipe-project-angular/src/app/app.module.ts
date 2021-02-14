@@ -26,8 +26,8 @@ import {RecipeModule} from './recipe.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    RecipeModule
+    RecipeModule,
+    AppRoutingModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
