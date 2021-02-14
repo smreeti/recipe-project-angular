@@ -11,7 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RecipeService} from './recipes/recipe.service';
 import {HttpClientModule} from '@angular/common/http';
-import {RecipeModule} from './recipe.module';
+import {RecipeModule} from './recipes/recipe.module';
 
 @NgModule({
   declarations: [

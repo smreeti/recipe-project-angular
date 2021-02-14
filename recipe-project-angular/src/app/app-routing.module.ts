@@ -8,6 +8,12 @@ const appRoutes: Routes = [
     redirectTo: '/recipes',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'recipes',
+  //   // loadChildren: './recipes/recipe.module#RecipesModule'
+  //   // loadChildren: () => import('./recipes/recipe.module')
+  //   //   .then(module => module.RecipeModule)
+  // },
   {
     path: 'shopping-list',
     component: ShoppingListComponent
