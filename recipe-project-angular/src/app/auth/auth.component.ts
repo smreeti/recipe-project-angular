@@ -30,7 +30,9 @@ export class AuthComponent implements OnInit {
     this.isLoginMode = !this.isLoginMode;
   };
 
-  onSubmit = () => {
+  onSubmit = ($event) => {
+    $event.preventDefault();
+
     if (!this.authForm.valid) {
       return;
     }

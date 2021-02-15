@@ -3,7 +3,6 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Subject, throwError} from 'rxjs';
 import {User} from './user.model';
-import {HttpServerResponse} from 'http2';
 
 export interface AuthResponseData {
   idToken: string;
@@ -66,7 +65,7 @@ export class AuthService {
     return throwError(errorMsg);
   };
 
-  private handleAuthentication = (response: HttpServerResponse) => {
+  private handleAuthentication = (response) => {
     const {email, localId, idToken, expiresIn} = response;
 
     const expirationDate: Date = new Date(

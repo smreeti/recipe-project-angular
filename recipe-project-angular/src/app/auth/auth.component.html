@@ -5,7 +5,7 @@
     </div>
 
     <form [formGroup]="authForm"
-          (ngSubmit)="onSubmit()">
+          (ngSubmit)="onSubmit($event)">
 
       <div class="form-group">
         <label for="email"> Email</label>
