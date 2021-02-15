@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthResponseData, AuthService} from './auth.service';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
@@ -11,13 +12,13 @@ import {Router} from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  isLoginMode = false;
-  authForm: FormGroup;
-  error: null;
-
   constructor(private authService: AuthService,
               private router: Router) {
   }
+
+  isLoginMode = true;
+  authForm: FormGroup;
+  error: null;
 
   ngOnInit(): void {
     this.authForm = new FormGroup({

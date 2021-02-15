@@ -24,10 +24,9 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right" *ngIf=isAuthenticated>
+        <li><a style="cursor: pointer; "(click) ="onLogout()">Logout</a></li>
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer;" class="dropdown-toggle" role="button"> Manage <span class="caret"></span></a>
-
-        <li><a style="cursor: pointer;">Logout</a></li>
         <ul class="dropdown-menu">
           <li><a style="cursor: pointer;">Save Data</a></li>
           <li><a style="cursor: pointer;">Fetch Data</a></li>
