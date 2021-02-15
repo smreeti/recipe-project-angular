@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {Subject, throwError} from 'rxjs';
+import {User} from './user.model';
+import {HttpServerResponse} from 'http2';
 
 export interface AuthResponseData {
   idToken: string;
@@ -14,6 +16,8 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+  user = new Subject<User>();
+
   constructor(private http: HttpClient) {
 
   }
@@ -26,7 +30,10 @@ export class AuthService {
         password,
         returnSecureToken: true
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError),
+        tap(response => {
+          this.handleAuthentication(response);
+        }));
   };
 
   login = (email: string, password: string) => {
@@ -37,7 +44,10 @@ export class AuthService {
         password,
         returnSecureToken: true
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError),
+        tap(response => {
+          this.handleAuthentication(response);
+        }));
   };
 
   private handleError = (errorResponse: HttpErrorResponse) => {
@@ -54,5 +64,18 @@ export class AuthService {
 
     }
     return throwError(errorMsg);
+  };
+
+  private handleAuthentication = (response: HttpServerResponse) => {
+    const {email, localId, idToken, expiresIn} = response;
+
+    const expirationDate: Date = new Date(
+      new Date().getTime() + +expiresIn * 10000);
+    const user = new User(
+      email,
+      localId,
+      idToken,
+      expirationDate);
+    this.user.next(user);
   };
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthResponseData, AuthService} from './auth.service';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,8 @@ export class AuthComponent implements OnInit {
   authForm: FormGroup;
   error: null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class AuthComponent implements OnInit {
 
     authObs.subscribe(response => {
         console.log('sign up response:::', response);
+        this.router.navigate(['/recipes']);
       },
       errorMessage => {
         console.log('sign up error:::', errorMessage);
