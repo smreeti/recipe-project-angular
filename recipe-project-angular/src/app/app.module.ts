@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {ShoppingEditComponent} from './shopping-list/shopping-edit/shopping-edit.component';
-import {DropdownDirective} from './shared/dropdown.directive';
 import {ShoppingListService} from './shopping-list/shopping-list-service';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -18,8 +17,7 @@ import {RecipeModule} from './recipes/recipe.module';
     AppComponent,
     HeaderComponent,
     ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
+    ShoppingEditComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +25,7 @@ import {RecipeModule} from './recipes/recipe.module';
     HttpClientModule,
     ReactiveFormsModule,
     RecipeModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

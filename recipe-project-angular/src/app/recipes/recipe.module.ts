@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from '../app-routing.module';
 import {CommonModule} from '@angular/common';
 import {RecipesRoutingModule} from './recipes-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {RecipesRoutingModule} from './recipes-routing.module';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    RecipesRoutingModule
+    RecipesRoutingModule,
+    SharedModule
   ]
 })
 export class RecipeModule {
