@@ -12,6 +12,7 @@ import {RecipeService} from './recipes/recipe.service';
 import {HttpClientModule} from '@angular/common/http';
 import {RecipeModule} from './recipes/recipe.module';
 import { AuthComponent } from './auth/auth.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
     RecipeModule,
     AppRoutingModule,
+    SharedModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
